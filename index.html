@@ -48,21 +48,57 @@
             </div>
         </nav>
 
-        <!-- SEARCH BAR -->
-        <div class="mt-6">
-            <input type="text" placeholder="Search for products"
-                class="w-full p-2 border border-gray-300 rounded-lg text-[13px]">
+        <!-- SEARCH BAR (non-editable) -->
+        <div class="mt-4">
+            <div class="relative w-full">
+                <input type="text" placeholder="Search for Sarees, Kurtis, Cosmetics, etc."
+                    class="w-full p-3 pl-10 border border-gray-300 rounded-full text-[13px] bg-gray-50" readonly>
+                <span class="absolute left-4 top-3.5 text-gray-400 text-[18px]">🔍</span>
+            </div>
         </div>
 
-        <!-- BANNER -->
-        <div class="mt-6">
-            <img src="assets/images/banner.jpg" class="w-full rounded-xl shadow">
+        <!-- CATEGORY SECTION -->
+        <div class="mt-6 border-b pb-4">
+            <div class="grid grid-cols-4 text-center gap-3">
+
+                <!-- Category 1 -->
+                <a href="category.html?cat=indian-dresses" class="block">
+                    <img src="assets/images/categories/indian-dressers.webp"
+                        class="w-20 h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
+                    <p class="text-[12px] mt-2 font-medium">Indian Dresses</p>
+                </a>
+
+                <!-- Category 2 -->
+                <a href="category.html?cat=popular" class="block">
+                    <img src="assets/images/categories/popular.webp"
+                        class="w-20 h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
+                    <p class="text-[12px] mt-2 font-medium">Popular Coll…</p>
+                </a>
+
+                <!-- Category 3 -->
+                <a href="category.html?cat=ethnic-wear" class="block">
+                    <img src="assets/images/categories/ethinic-wear.webp"
+                        class="w-20 h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
+                    <p class="text-[12px] mt-2 font-medium">Ethnic Wear</p>
+                </a>
+
+                <!-- Category 4 -->
+                <a href="category.html?cat=combo" class="block">
+                    <img src="assets/images/categories/combo.webp"
+                        class="w-20 h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
+                    <p class="text-[12px] mt-2 font-medium">COMBO</p>
+                </a>
+
+            </div>
         </div>
 
         <!-- PRODUCT GRID TITLE -->
         <div class="mt-10">
             <h2 class="text-[28px] font-semibold">Best Selling</h2>
         </div>
+
+        <!-- PRODUCT GRID (2 columns) -->
+        <div id="product-list" class="mt-6 grid grid-cols-2 gap-6"></div>
 
         <!-- PRODUCT GRID -->
         <div class="mt-6 grid grid-cols-1 gap-10">
@@ -75,7 +111,7 @@
         </div>
 
         <!-- FOOTER -->
-        <footer class="bg-black text-white mt-12 py-10 rounded-t-xl ">
+        <footer class="bg-black text-white py-10 rounded-t-xl ">
 
             <!-- 3 Columns -->
             <div class="w-full grid grid-cols-3 gap-8 text-left text-[13px] px-4">
@@ -128,8 +164,60 @@
 
         </footer>
 
-
     </div> <!-- MAIN WRAPPER END -->
+
+    <!-- CART OVERLAY -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"></div>
+
+    <!-- CART DRAWER -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"></div>
+
+    <!-- FULL WIDTH CART DRAWER -->
+    <div id="cartDrawer"
+        class="fixed top-0 right-0 w-full h-full bg-white shadow-xl translate-x-full transition-transform duration-300 z-50">
+
+        <!-- HEADER -->
+        <div class="p-6 flex justify-between items-center border-b">
+            <h2 class="text-[30px] font-semibold border-b-4 border-orange-400 pb-1">Your Cart</h2>
+            <button id="closeCart" class="text-3xl">&times;</button>
+        </div>
+
+        <!-- CART ITEMS (empty space like screenshot) -->
+        <div id="cartItems" class="h-[55%] p-6 overflow-y-auto">
+            <p class="text-gray-400 text-center mt-10">Your cart is empty.</p>
+        </div>
+
+        <!-- BOTTOM SECTION -->
+        <div class="w-full border-t bg-white p-6 space-y-3">
+
+            <div class="flex justify-between text-[18px]">
+                <p>Cart Total:</p>
+                <p>₹00.00</p>
+            </div>
+
+            <div class="flex justify-between text-[18px]">
+                <p>Shipping:</p>
+                <p class="text-green-600 font-semibold">FREE</p>
+            </div>
+
+            <div class="flex justify-between text-[18px] border-b pb-4">
+                <p>To Pay:</p>
+                <p>₹00.00</p>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="text-[28px] font-semibold">₹00.00</p>
+                <p class="text-gray-500 text-sm">Inclusive of all taxes</p>
+            </div>
+
+            <button class="w-full bg-purple-700 text-white text-[18px] py-3 rounded-lg font-semibold mt-4">
+                Confirm Order
+            </button>
+
+        </div>
+    </div>
+
+
 
 </body>
 

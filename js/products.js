@@ -1,56 +1,73 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const box = document.getElementById("product-list");
-    const products = JSON.parse(localStorage.getItem("products")) || [];
+async function loadProducts() {
+    const response = await fetch("assets/products.json");
+    const products = await response.json();
 
-    // Filter only "home" category products
-    const homeProducts = products.filter(p => p.category === "home");
+    const container = document.getElementById("product-list");
 
-    if (homeProducts.length === 0) {
-        box.innerHTML = `
-            <p class="text-gray-500 text-[13px]">No products available in home category.</p>
-        `;
-        return;
-    }
+    container.innerHTML = products
+        .map(p => `
+        <a href="../public_html/product.html?id=${p.id}" class="block bg-white rounded-xl overflow-hidden shadow">
 
-    box.innerHTML = homeProducts
-        .map(
-            (p) => `
-        <a href="product.html?id=${p.id}" class="block">
-        
-            <!-- PRODUCT CARD -->
-            <div class="bg-white p-3 rounded-xl shadow hover:shadow-lg transition mx-auto">
-
-                <!-- IMAGE BOX -->
-                <div class="w-full h-[565px] relative overflow-hidden rounded-xl mx-auto">
-
-                    <!-- Image 1 -->
-                    <img src="${p.image1}" 
-                        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300">
-
-                    <!-- Image 2 (hover show) -->
-                    <img src="${p.image2}" 
-                        class="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 transition-opacity duration-300">
-                </div>
-
-                <!-- TITLE -->
-                <h3 class="mt-3 text-[13px] font-medium text-gray-900 leading-tight">
-                    ${p.name}
-                </h3>
-
-                <!-- PRICES -->
-                <div class="flex items-center gap-2 mt-1">
-                    <span class="text-green-600 font-bold text-[16px]">₹${p.price}</span>
-                    <span class="line-through text-gray-400 text-[12px]">₹${p.oldPrice}</span>
-                    <span class="text-red-600 text-[12px] font-bold">${p.discount}% OFF</span>
-                </div>
-
-                <!-- FREE DELIVERY -->
-                <p class="text-green-600 text-[12px] mt-1">Free Delivery</p>
-
+            <!-- IMAGE -->
+            <div class="w-full h-[300px] overflow-hidden">
+                <img src="${p.image1}"
+                     class="w-full h-full object-cover">
             </div>
 
+            <div class="p-3">
+
+                <!-- NAME -->
+                <p class="text-[13px] font-medium text-gray-800 leading-tight line-clamp-2">
+                    ${p.name}
+                </p>
+
+                <!-- PRICE + OLD PRICE + DISCOUNT -->
+                <div class="mt-1">
+                    <span class="text-[18px] font-semibold text-green-700">₹${p.price}.00</span>
+                    <span class="text-[13px] line-through text-gray-400 ml-1">₹${p.oldPrice}.00</span>
+                    <span class="text-[13px] text-red-500 font-semibold ml-1">${p.discount}% off</span>
+                </div>
+
+                <!-- SPECIAL OFFERS -->
+                <p class="text-[12px] text-green-600 font-medium mt-1">₹755 with 2 Special Offers</p>
+
+                <!-- FREE DELIVERY -->
+                <p class="text-[12px] text-green-700 font-medium mt-1">Free Delivery</p>
+
+                <!-- RATING BOX -->
+                <div class="flex items-center gap-2 mt-2">
+                    <span class="bg-green-600 text-white px-2 py-1 text-[12px] rounded-md font-semibold">
+                        ⭐ ${p.rating}
+                    </span>
+                    <span class="text-[12px] text-gray-600">(${p.ratingCount})</span>
+                </div>
+
+            </div>
         </a>
-    `
-        )
+    `)
         .join("");
+}
+
+loadProducts();
+
+
+// cart logic 
+const cartIcon = document.querySelector("span:last-child"); // 🛒 icon
+const cartDrawer = document.getElementById("cartDrawer");
+const cartOverlay = document.getElementById("cartOverlay");
+const closeCart = document.getElementById("closeCart");
+
+// OPEN CART
+cartIcon.addEventListener("click", () => {
+    cartDrawer.classList.remove("translate-x-full");
+    cartOverlay.classList.remove("hidden");
 });
+
+// CLOSE CART
+function hideCart() {
+    cartDrawer.classList.add("translate-x-full");
+    cartOverlay.classList.add("hidden");
+}
+
+closeCart.addEventListener("click", hideCart);
+cartOverlay.addEventListener("click", hideCart);

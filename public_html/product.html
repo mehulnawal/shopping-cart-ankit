@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Product — Shopping</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* small helper to clamp lines for product name */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- product JS -->
+    <script src="../js/productDetails.js" defer></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- MAIN WRAPPER - mobile 500px centered -->
+    <div class="mx-auto w-[500px]">
+
+        <!-- NAV (same compact header you used) -->
+        <nav class="py-4">
+            <div class="w-full flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <span class="text-[24px] cursor-pointer">☰</span>
+                    <h1 class="font-semibold text-[24px]">Shopping</h1>
+                </div>
+                <div class="flex gap-4 text-[20px] text-gray-700">
+                    <span id="wishlistBtn" class="cursor-pointer">🤍</span>
+                    <span id="cartBtn" class="cursor-pointer">🛒</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- small offer / headline (optional) -->
+        <div class="text-center text-[12px] text-gray-600 mb-4">Buy 2 Get 2 Free (Add 4 item to cart)</div>
+
+        <!-- AD LABEL -->
+        <div class="text-center text-[12px] text-gray-500 mb-3">ADVERTISEMENT</div>
+
+        <!-- MAIN PRODUCT IMAGE -->
+        <div id="mainImageWrap" class="w-full h-[420px] rounded-xl overflow-hidden bg-white shadow mb-4">
+            <!-- image injected by JS -->
+        </div>
+
+        <!-- Thumbnails / Similar small -->
+        <div id="thumbs" class="flex gap-3 mb-4 justify-start">
+            <!-- injected -->
+        </div>
+
+        <!-- Title / Icons -->
+        <h2 id="productTitle" class="text-[15px] font-semibold line-clamp-2 mb-2"></h2>
+
+        <!-- Price row -->
+        <div class="flex items-center gap-3 mb-2">
+            <span id="productPrice" class="text-[20px] font-bold text-green-700"></span>
+            <span id="productOld" class="line-through text-[13px] text-gray-400"></span>
+            <span id="productDiscount" class="text-[13px] text-red-600 font-semibold"></span>
+        </div>
+
+        <!-- offer chip + rating badge row -->
+        <div class="flex items-center gap-3 mb-3">
+            <span id="offerChip" class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[12px]">₹250 with 2
+                Special Offers</span>
+
+            <div class="flex items-center gap-2 ml-auto">
+                <span class="bg-green-600 text-white px-3 py-1 rounded text-[13px] font-semibold"
+                    id="ratingBadge">4.3</span>
+                <span id="ratingCount" class="text-[12px] text-gray-600"> (123)</span>
+            </div>
+        </div>
+
+        <p class="text-[13px] text-green-700 mb-4">Free Delivery</p>
+
+        <!-- AD placeholder -->
+        <div class="text-center text-[12px] text-gray-500 mb-4">ADVERTISEMENT</div>
+
+        <!-- Product Details / Description -->
+        <div class="mb-6">
+            <h3 class="text-[16px] font-semibold mb-2">Product Details</h3>
+            <div id="productDescription" class="text-[14px] text-gray-700 leading-relaxed"></div>
+        </div>
+
+        <!-- Small repeated offers (single-line) -->
+        <div id="repeatOffers" class="text-[13px] text-gray-600 mb-6"></div>
+
+        <!-- AD placeholder -->
+        <div class="text-center text-[12px] text-gray-500 mb-4">ADVERTISEMENT</div>
+
+        <!-- Buttons -->
+        <div class="flex gap-4 mb-8">
+            <button id="addToCartBtn" class="flex-1 bg-green-600 text-white py-3 rounded-md font-semibold">Add to
+                Cart</button>
+            <button id="buyNowBtn" class="flex-1 bg-green-700 text-white py-3 rounded-md font-semibold">Buy Now</button>
+        </div>
+
+        <!-- Ratings & Reviews Summary -->
+        <div class="mb-6">
+            <h3 class="text-[16px] font-semibold mb-3">Product Ratings & Reviews</h3>
+
+            <div class="bg-white p-4 rounded-xl shadow">
+                <div class="flex items-center gap-6">
+                    <div class="text-[32px] font-bold text-green-700" id="avgRating">4.3</div>
+                    <div class="flex-1">
+                        <!-- bars -->
+                        <div class="flex items-center justify-between text-[13px] mb-2">
+                            <div class="w-2/12">Excellent</div>
+                            <div class="w-8/12 bg-gray-100 h-3 rounded mx-3">
+                                <div id="barExcellent" class="h-3 bg-green-500 rounded w-3/12"></div>
+                            </div>
+                            <div class="w-2/12 text-right" id="countExcellent">2143</div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-[13px] mb-2">
+                            <div class="w-2/12">Very Good</div>
+                            <div class="w-8/12 bg-gray-100 h-3 rounded mx-3">
+                                <div id="barVeryGood" class="h-3 bg-green-400 rounded w-1/12"></div>
+                            </div>
+                            <div class="w-2/12 text-right" id="countVeryGood">409</div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-[13px] mb-2">
+                            <div class="w-2/12">Good</div>
+                            <div class="w-8/12 bg-gray-100 h-3 rounded mx-3">
+                                <div id="barGood" class="h-3 bg-yellow-400 rounded w-4/12"></div>
+                            </div>
+                            <div class="w-2/12 text-right" id="countGood">1957</div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-[13px] mb-2">
+                            <div class="w-2/12">Average</div>
+                            <div class="w-8/12 bg-gray-100 h-3 rounded mx-3">
+                                <div id="barAverage" class="h-3 bg-orange-400 rounded w-1/12"></div>
+                            </div>
+                            <div class="w-2/12 text-right" id="countAverage">547</div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-[13px]">
+                            <div class="w-2/12">Poor</div>
+                            <div class="w-8/12 bg-gray-100 h-3 rounded mx-3">
+                                <div id="barPoor" class="h-3 bg-red-400 rounded w-1/12"></div>
+                            </div>
+                            <div class="w-2/12 text-right" id="countPoor">345</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real Images (thumbnails) -->
+        <div class="mb-6">
+            <h4 class="text-[14px] font-semibold mb-3">Real Images and videos from customers</h4>
+            <div id="customerImages" class="flex gap-3"></div>
+        </div>
+
+        <!-- Reviews list (6 shown) -->
+        <div class="mb-8">
+            <h4 class="text-[16px] font-semibold mb-4">Customer Reviews</h4>
+            <div id="reviewsList" class="space-y-6"></div>
+
+            <div class="text-center mt-6">
+                <button id="viewAllReviews" class="text-purple-700 font-semibold">VIEW ALL REVIEWS</button>
+            </div>
+        </div>
+
+        <!-- FEATURES STRIP -->
+        <div class="bg-[#eef3ff] w-full py-4 rounded-xl flex items-center justify-around mb-10">
+
+            <!-- Lowest Price -->
+            <div class="flex flex-col items-center text-center">
+                <img src="../assets/images/categories/lowest-price.webp" class="w-12 h-12 mb-1">
+                <span class="text-[13px] font-semibold">Lowest Price</span>
+            </div>
+
+            <div class="w-px h-10 bg-gray-300"></div>
+
+            <!-- Cash on Delivery -->
+            <div class="flex flex-col items-center text-center">
+                <img src="../assets/images/categories/cash-on-delivery.webp" class="w-12 h-12 mb-1">
+                <span class="text-[13px] font-semibold">Cash on Delivery</span>
+            </div>
+
+            <div class="w-px h-10 bg-gray-300"></div>
+
+            <!-- 7-day Returns -->
+            <div class="flex flex-col items-center text-center">
+                <img src="../assets/images/categories/7-days-return.webp" class="w-12 h-12 mb-1">
+                <span class="text-[13px] font-semibold">7-day Returns</span>
+            </div>
+
+        </div>
+
+
+        <!-- Products For You (2-column grid) -->
+        <div class="mb-10">
+            <h4 class="text-[16px] font-semibold mb-4">Products For You</h4>
+            <div id="productsForYou" class="grid grid-cols-2 gap-4"></div>
+        </div>
+
+    </div> <!-- wrapper -->
+
+    <!-- CART OVERLAY -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"></div>
+
+    <div id="cartDrawer"
+        class="fixed top-0 right-0 w-full h-full bg-white shadow-xl translate-x-full transition-transform duration-300 z-50">
+
+        <!-- HEADER -->
+        <div class="p-6 flex justify-between items-center border-b">
+            <h2 class="text-[30px] font-semibold border-b-4 border-orange-400 pb-1">Your Cart</h2>
+            <button id="closeCart" class="text-3xl">&times;</button>
+        </div>
+
+        <!-- CART ITEMS (empty space like screenshot) -->
+        <div id="cartItems" class="h-[55%] p-6 overflow-y-auto">
+            <p class="text-gray-400 text-center mt-10">Your cart is empty.</p>
+        </div>
+
+        <!-- BOTTOM SECTION -->
+        <div class="w-full border-t bg-white p-6 space-y-3">
+
+            <div class="flex justify-between text-[18px]">
+                <p>Cart Total:</p>
+                <p>₹00.00</p>
+            </div>
+
+            <div class="flex justify-between text-[18px]">
+                <p>Shipping:</p>
+                <p class="text-green-600 font-semibold">FREE</p>
+            </div>
+
+            <div class="flex justify-between text-[18px] border-b pb-4">
+                <p>To Pay:</p>
+                <p>₹00.00</p>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="text-[28px] font-semibold">₹00.00</p>
+                <p class="text-gray-500 text-sm">Inclusive of all taxes</p>
+            </div>
+
+            <button class="w-full bg-purple-700 text-white text-[18px] py-3 rounded-lg font-semibold mt-4">
+                Confirm Order
+            </button>
+
+        </div>
+    </div>
+
+
+    <script>
+        // cart toggle
+        const cartBtn = document.getElementById('cartBtn');
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const closeCart = document.getElementById('closeCart');
+        cartBtn?.addEventListener('click', () => {
+            cartDrawer.classList.remove('translate-x-full');
+            cartOverlay.classList.remove('hidden');
+        });
+        function hideCart() {
+            cartDrawer.classList.add('translate-x-full');
+            cartOverlay.classList.add('hidden');
+        }
+        closeCart?.addEventListener('click', hideCart);
+        cartOverlay?.addEventListener('click', hideCart);
+    </script>
+
+</body>
+
+</html>

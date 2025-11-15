@@ -4,10 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Viewer</title>
 
-    <title>Admin Panel</title>
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -19,90 +17,17 @@
     <script defer src="admin.js"></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 p-6">
 
-    <!-- MAIN LAYOUT (2 COLUMNS) -->
-    <div class="w-full min-h-screen grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Admin Product Viewer</h1>
 
-        <!-- LEFT SIDE — ADD/EDIT FORM -->
-        <div class="bg-white rounded-xl shadow p-6 h-fit md:sticky md:top-6">
+        <p class="text-gray-600 mb-4">
+            This admin panel only <b>loads data</b> from <code>products.json</code>.
+            To update products, please edit the JSON file in Hostinger File Manager.
+        </p>
 
-            <h2 id="formTitle" class="text-[24px] font-semibold mb-4">Add Product</h2>
-
-            <form id="productForm" class="space-y-4">
-
-                <!-- Product ID (Auto) -->
-                <input type="text" id="productID" readonly class="w-full p-2 border rounded bg-gray-200 text-[13px]"
-                    placeholder="Product ID (Auto)" />
-
-                <!-- Name -->
-                <input type="text" id="productName" required class="w-full p-2 border rounded text-[13px]"
-                    placeholder="Product Name" />
-
-                <!-- Image 1 -->
-                <input type="text" id="image1" required class="w-full p-2 border rounded text-[13px]"
-                    placeholder="Image 1 URL" />
-
-                <!-- Image 2 -->
-                <input type="text" id="image2" required class="w-full p-2 border rounded text-[13px]"
-                    placeholder="Image 2 URL" />
-
-                <!-- Price -->
-                <input type="number" id="price" required class="w-full p-2 border rounded text-[13px]"
-                    placeholder="Price" />
-
-                <!-- Old Price -->
-                <input type="number" id="oldPrice" required class="w-full p-2 border rounded text-[13px]"
-                    placeholder="Old Price" />
-
-                <!-- Discount -->
-                <input type="number" id="discount" required class="w-full p-2 border rounded text-[13px]"
-                    placeholder="Discount Percentage" />
-
-                <!-- Category Dropdown -->
-                <select id="category" required class="w-full p-2 border rounded text-[13px]">
-                    <option value="" disabled selected>Select Category</option>
-                    <option value="home">Home</option>
-                    <option value="category1">Category 1</option>
-                    <option value="category2">Category 2</option>
-                    <option value="category3">Category 3</option>
-                    <option value="category4">Category 4</option>
-                </select>
-
-                <!-- Description -->
-                <textarea id="description" required class="w-full p-2 border rounded text-[13px] h-24"
-                    placeholder="Description"></textarea>
-
-                <!-- ⭐ Rating (Visible Only on Edit) -->
-                <input type="number" step="0.1" id="rating" class="hidden w-full p-2 border rounded text-[13px]"
-                    placeholder="Rating (4.0 - 5.0)" />
-
-                <!-- ⭐ Rating Count (Visible Only on Edit) -->
-                <input type="number" id="ratingCount" class="hidden w-full p-2 border rounded text-[13px]"
-                    placeholder="Rating Count" />
-
-                <!-- Buttons -->
-                <button type="submit" id="submitBtn" class="w-full bg-black text-white py-2 rounded text-[14px]">
-                    Add Product
-                </button>
-
-                <button type="button" id="cancelEdit" onclick="cancelEditMode()"
-                    class="hidden w-full bg-gray-400 text-white py-2 rounded text-[14px]">
-                    Cancel Edit
-                </button>
-
-            </form>
-        </div>
-
-        <!-- RIGHT SIDE — PRODUCT LIST -->
-        <div class="bg-white rounded-xl shadow p-6 overflow-y-auto h-screen">
-            <h1 class="text-[28px] font-bold mb-6">All Products</h1>
-
-            <div id="productList" class="space-y-4">
-                <!-- JS will load product rows here -->
-            </div>
-        </div>
-
+        <div id="productList" class="space-y-4"></div>
     </div>
 
 </body>

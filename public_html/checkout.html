@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Shopping</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+    </style>
+
+    <script defer src="../js/checkout.js"></script>
+</head>
+
+<body class="bg-[#faf7fc]">
+
+    <!-- HEADER -->
+    <div class="w-full max-w-[500px] mx-auto bg-white p-4 flex items-center gap-3 shadow">
+        <span onclick="history.back()" class="text-2xl cursor-pointer">←</span>
+        <h1 class="text-lg font-semibold">Shopping</h1>
+    </div>
+
+    <!-- INTRO TEXT -->
+    <div class="w-full max-w-[500px] mx-auto text-center text-[13px] text-gray-700 px-6 py-4">
+        Your cart is almost there—just one step from checkout! We've kept everything simple and trustworthy,
+        inspired by the smooth experiences you know from Amazon and Flipkart.
+    </div>
+
+    <!-- SUMMARY CARD -->
+    <div class="w-full max-w-[500px] mx-auto">
+        <div class="bg-white mx-4 rounded-2xl shadow p-6">
+            <h2 class="text-center text-[18px] font-semibold mb-1">
+                <span id="itemCount">1</span> item in your cart
+            </h2>
+
+            <p class="text-center text-[12px] text-gray-600">
+                Prices include GST • Free delivery
+            </p>
+
+            <hr class="my-4">
+
+            <!-- SUMMARY VALUES -->
+            <div class="text-center space-y-6">
+                <div>
+                    <p class="text-gray-500 text-sm">MRP</p>
+                    <p class="text-lg font-semibold" id="mrpValue">₹0</p>
+                </div>
+
+                <div>
+                    <p class="text-gray-500 text-sm">Sale price</p>
+                    <p class="text-lg font-semibold text-green-700" id="saleValue">₹0</p>
+                </div>
+
+                <div>
+                    <p class="text-gray-500 text-sm">Delivery charge</p>
+                    <p class="text-lg font-semibold">₹0</p>
+                </div>
+
+                <div>
+                    <p class="text-gray-500 text-sm">GST</p>
+                    <p class="font-semibold">Included</p>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <p class="text-center text-[18px] font-semibold">
+                Total payable
+            </p>
+            <p class="text-center text-[20px] font-bold text-purple-700" id="totalPayable">₹0</p>
+        </div>
+    </div>
+
+    <!-- PROCEED BUTTON -->
+    <div class="w-full max-w-[500px] mx-auto p-4">
+        <button class="w-full bg-green-700 text-white py-4 rounded-xl text-[16px]">
+            Proceed to Checkout
+        </button>
+    </div>
+
+    <!-- ADVERTISEMENT BLOCK -->
+    <div class="w-full max-w-[500px] mx-auto bg-white text-center px-6 py-10 text-[13px] text-gray-700 leading-relaxed">
+        <p class="font-semibold mb-2">ADVERTISEMENT</p>
+
+        Need quick clarity before you buy? Our built-in assistant helps you compare product details,
+        confirm compatibility, and discover deals without leaving your cart.
+        <br><br>
+        Prices update in real time and the best coupons are applied automatically.
+        <br><br>
+        Save items to wishlist, enjoy secure payments, instant confirmations, and track your orders easily.
+        <br><br>
+        Once you place the order, you get timely updates and AI-powered suggestions.
+    </div>
+
+</body>
+
+</html>
