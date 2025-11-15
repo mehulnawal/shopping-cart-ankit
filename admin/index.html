@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin Panel</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+    </style>
+
+    <script defer src="admin.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- MAIN WRAPPER -->
+    <div class="mx-auto w-[500px] py-8">
+
+        <!-- HEADER -->
+        <h1 class="text-[28px] font-bold mb-6">Admin Panel</h1>
+
+        <!-- PRODUCT LIST -->
+        <h2 class="text-[20px] font-semibold mb-3">All Products</h2>
+
+        <div id="productList" class="space-y-4 mb-10">
+            <!-- JS will load product rows here -->
+        </div>
+
+        <!-- ADD / EDIT FORM -->
+        <div class="bg-white p-5 rounded-xl shadow">
+
+            <h2 id="formTitle" class="text-[20px] font-semibold mb-4">Add Product</h2>
+
+            <form id="productForm" class="space-y-4">
+
+                <!-- Product ID (Auto) -->
+                <input type="text" id="productID" readonly class="w-full p-2 border rounded bg-gray-200 text-[13px]"
+                    placeholder="Product ID (Auto)" />
+
+                <!-- Name -->
+                <input type="text" id="productName" required class="w-full p-2 border rounded text-[13px]"
+                    placeholder="Product Name" />
+
+                <!-- Image 1 -->
+                <input type="text" id="image1" required class="w-full p-2 border rounded text-[13px]"
+                    placeholder="Image 1 URL" />
+
+                <!-- Image 2 -->
+                <input type="text" id="image2" required class="w-full p-2 border rounded text-[13px]"
+                    placeholder="Image 2 URL" />
+
+                <!-- Price -->
+                <input type="number" id="price" required class="w-full p-2 border rounded text-[13px]"
+                    placeholder="Price" />
+
+                <!-- Old Price -->
+                <input type="number" id="oldPrice" required class="w-full p-2 border rounded text-[13px]"
+                    placeholder="Old Price" />
+
+                <!-- Discount -->
+                <input type="number" id="discount" required class="w-full p-2 border rounded text-[13px]"
+                    placeholder="Discount Percentage" />
+
+                <!-- Category Dropdown -->
+                <select id="category" required class="w-full p-2 border rounded text-[13px]">
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="home">Home</option>
+                    <!-- <option value="category1">Category 1</option> -->
+                    <!-- <option value="category2">Category 2</option> -->
+                    <!-- <option value="category3">Category 3</option> -->
+                    <!-- <option value="category4">Category 4</option> -->
+                </select>
+
+                <!-- Description -->
+                <textarea id="description" required class="w-full p-2 border rounded text-[13px] h-24"
+                    placeholder="Description"></textarea>
+
+                <!-- Buttons -->
+                <button type="submit" id="submitBtn" class="w-full bg-black text-white py-2 rounded text-[14px]">
+                    Add Product
+                </button>
+
+                <button type="button" id="cancelEdit" onclick="cancelEditMode()"
+                    class="hidden w-full bg-gray-400 text-white py-2 rounded text-[14px] mt-2">
+                    Cancel Edit
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

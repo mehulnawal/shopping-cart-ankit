@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sale Sale Sale - Home</title>
+
+    <!-- Google Font substitute (Inter for now) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+    </style>
+
+    <script defer src="js/products.js"></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- MAIN WRAPPER (exact 500px width) -->
+    <div class="mx-auto w-[500px]">
+
+        <!-- NAVBAR -->
+        <nav class="py-4">
+            <div class="w-full flex justify-between items-center">
+
+                <!-- LEFT: Menu + Logo -->
+                <div class="flex items-center gap-3">
+                    <!-- Menu Icon -->
+                    <span class="text-[28px] cursor-pointer">☰</span>
+                    <!-- Logo -->
+                    <h1 class="font-semibold text-[28px]">Shopping</h1>
+                </div>
+
+                <!-- RIGHT: Wishlist + Cart -->
+                <div class="flex gap-6 text-[22px] text-gray-700">
+                    <span class="cursor-pointer">🤍</span>
+                    <span class="cursor-pointer">🛒</span>
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- SEARCH BAR -->
+        <div class="mt-6">
+            <input type="text" placeholder="Search for products"
+                class="w-full p-2 border border-gray-300 rounded-lg text-[13px]">
+        </div>
+
+        <!-- BANNER -->
+        <div class="mt-6">
+            <img src="assets/images/banner.jpg" class="w-full rounded-xl shadow">
+        </div>
+
+        <!-- PRODUCT GRID TITLE -->
+        <div class="mt-10">
+            <h2 class="text-[28px] font-semibold">Best Selling</h2>
+        </div>
+
+        <!-- PRODUCT GRID -->
+        <div class="mt-6 grid grid-cols-1 gap-10">
+
+            <!-- JS will insert cards here -->
+            <div class="mt-6 grid grid-cols-1 gap-10">
+                <div id="product-list" class="contents"></div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="bg-black text-white mt-12 py-10 rounded-t-xl ">
+
+            <!-- 3 Columns -->
+            <div class="w-full grid grid-cols-3 gap-8 text-left text-[13px] px-4">
+
+                <!-- ABOUT -->
+                <div>
+                    <h3 class="text-[16px] font-semibold mb-3">About</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="hover:underline">About Us</a></li>
+                        <li><a href="#" class="hover:underline">Contact Us</a></li>
+                        <li><a href="#" class="hover:underline">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!-- POLICIES -->
+                <div>
+                    <h3 class="text-[16px] font-semibold mb-3">Policies</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:underline">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:underline">Return & Refund Policy</a></li>
+                        <li><a href="#" class="hover:underline">Disclosure Policy</a></li>
+                        <li><a href="#" class="hover:underline">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <!-- SUPPORT -->
+                <div>
+                    <h3 class="text-[16px] font-semibold mb-3">Support</h3>
+                    <ul class="space-y-1">
+                        <li class="flex items-center gap-2">
+                            <img src="assets/icons/mail.png" class="w-4 h-4">
+                            <a href="mailto:contact@crazy4u.in" class="hover:underline">
+                                contact@crazy4u.in
+                            </a>
+                        </li>
+                        <li><a href="#" class="hover:underline">Shipping Info</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- LINE DIVIDER -->
+            <div class="border-t border-gray-700 mt-10 pt-4">
+                <p class="text-center text-[12px] opacity-70">
+                    © 2025 crazy4u.in | Powered by crazy4u Enterprise
+                </p>
+            </div>
+
+        </footer>
+
+
+    </div> <!-- MAIN WRAPPER END -->
+
+</body>
+
+</html>
