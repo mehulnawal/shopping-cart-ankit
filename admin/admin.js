@@ -16,6 +16,16 @@ function generateProductID() {
     return "P" + String(lastID).padStart(4, "0");
 }
 
+// ⭐ Generate random rating (4.0 to 5.0)
+function generateRandomRating() {
+    return (Math.random() * (5 - 4) + 4).toFixed(1);
+}
+
+// ⭐ Generate random rating count (50 to 5000)
+function generateRandomRatingCount() {
+    return Math.floor(Math.random() * (5000 - 50) + 50);
+}
+
 // Load products into admin list
 function loadProductList() {
     const list = document.getElementById("productList");
@@ -28,6 +38,7 @@ function loadProductList() {
             <div>
                 <p class="text-[13px]"><b>${p.id}</b> - ${p.name}</p>
                 <p class="text-[12px] text-gray-500">Category: ${p.category}</p>
+                <p class="text-[12px] text-yellow-600">⭐ ${p.rating} (${p.ratingCount})</p>
             </div>
 
             <div class="flex gap-3">
@@ -44,39 +55,54 @@ function loadProductList() {
 }
 
 // Delete product
-// function deleteProduct(id) {
-//     if (!confirm("Are you sure you want to delete this product?")) return;
+function deleteProduct(id) {
+    if (!confirm("Are you sure?")) return;
 
-//     const products = getProducts().filter((p) => p.id !== id);
-//     saveProducts(products);
-//     loadProductList();
-// }
+    const products = getProducts().filter((p) => p.id !== id);
+    saveProducts(products);
+    loadProductList();
+}
 
-// Edit product (Load into form)
-// function editProduct(id) {
-//     const products = getProducts();
-//     const product = products.find((p) => p.id === id);
+// Edit product
+function editProduct(id) {
+    const products = getProducts();
+    const product = products.find((p) => p.id === id);
 
-//     document.getElementById("formTitle").innerText = "Edit Product";
-//     document.getElementById("submitBtn").innerText = "Update Product";
-//     document.getElementById("cancelEdit").classList.remove("hidden");
+    // Switch to edit mode
+    document.getElementById("formTitle").innerText = "Edit Product";
+    document.getElementById("submitBtn").innerText = "Update Product";
+    document.getElementById("cancelEdit").classList.remove("hidden");
 
-//     document.getElementById("productID").value = product.id;
-//     document.getElementById("productName").value = product.name;
-//     document.getElementById("image1").value = product.image1;
-//     document.getElementById("image2").value = product.image2;
-//     document.getElementById("price").value = product.price;
-//     document.getElementById("oldPrice").value = product.oldPrice;
-//     document.getElementById("discount").value = product.discount;
-//     document.getElementById("category").value = product.category;
-//     document.getElementById("description").value = product.description;
-// }
+    // Show rating fields
+    document.getElementById("rating").classList.remove("hidden");
+    document.getElementById("ratingCount").classList.remove("hidden");
+
+    // Fill form
+    document.getElementById("productID").value = product.id;
+    document.getElementById("productName").value = product.name;
+    document.getElementById("image1").value = product.image1;
+    document.getElementById("image2").value = product.image2;
+    document.getElementById("price").value = product.price;
+    document.getElementById("oldPrice").value = product.oldPrice;
+    document.getElementById("discount").value = product.discount;
+    document.getElementById("category").value = product.category;
+    document.getElementById("description").value = product.description;
+
+    // ⭐ Load ratings in form
+    document.getElementById("rating").value = product.rating;
+    document.getElementById("ratingCount").value = product.ratingCount;
+}
 
 // Exit edit mode
 function cancelEditMode() {
     document.getElementById("formTitle").innerText = "Add Product";
     document.getElementById("submitBtn").innerText = "Add Product";
     document.getElementById("cancelEdit").classList.add("hidden");
+
+    // Hide rating fields
+    document.getElementById("rating").classList.add("hidden");
+    document.getElementById("ratingCount").classList.add("hidden");
+
     document.getElementById("productForm").reset();
 }
 
@@ -85,11 +111,12 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const products = getProducts();
+    const editingID = document.getElementById("productID").value;
+
+    const isEditing = editingID !== "";
 
     const newProduct = {
-        id:
-            document.getElementById("productID").value ||
-            generateProductID(),
+        id: editingID || generateProductID(),
         name: document.getElementById("productName").value,
         image1: document.getElementById("image1").value,
         image2: document.getElementById("image2").value,
@@ -98,17 +125,22 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
         discount: document.getElementById("discount").value,
         category: document.getElementById("category").value,
         description: document.getElementById("description").value,
+
+        // ⭐ If editing, take from form — else auto-generate
+        rating: isEditing
+            ? document.getElementById("rating").value
+            : generateRandomRating(),
+
+        ratingCount: isEditing
+            ? document.getElementById("ratingCount").value
+            : generateRandomRatingCount(),
     };
 
-    // Check if updating existing product
-    const existingIndex = products.findIndex(
-        (p) => p.id === newProduct.id
-    );
-
-    if (existingIndex >= 0) {
-        products[existingIndex] = newProduct; // Update
+    if (isEditing) {
+        const index = products.findIndex((p) => p.id === newProduct.id);
+        products[index] = newProduct;
     } else {
-        products.push(newProduct); // Add new
+        products.push(newProduct);
     }
 
     saveProducts(products);
