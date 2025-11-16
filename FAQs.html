@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us</title>
+
+    <!-- Google Font substitute (Inter for now) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- MAIN WRAPPER (500px but responsive) -->
+    <div class="mx-auto w-full max-w-[500px] px-3">
+
+        <!-- NAVBAR -->
+        <nav class="py-4 border-b-2">
+            <div class="w-full flex justify-between items-center">
+
+                <!-- LEFT: Menu + Logo -->
+                <div class="flex items-center gap-3">
+
+                    <!-- Menu Icon -->
+                    <a href="index.html">
+                        <svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            mt="2" iconsize="24" class="sc-gswNZR ffVWIj">
+                            <path
+                                d="M13.7461 2.31408C13.5687 2.113 13.3277 2 13.0765 2C12.8252 2 12.5843 2.113 12.4068 2.31408L6.27783 9.24294C5.90739 9.66174 5.90739 10.3382 6.27783 10.757L12.4068 17.6859C12.7773 18.1047 13.3757 18.1047 13.7461 17.6859C14.1166 17.2671 14.0511 16.5166 13.7461 16.1718L8.29154 9.99462L13.7461 3.82817C13.9684 3.57691 14.1071 2.72213 13.7461 2.31408Z"
+                                fill="#666666"></path>
+                        </svg>
+                    </a>
+
+                    <!-- Logo -->
+                    <svg viewBox="0 0 380 100" width="140" height="40" aria-label="Shopping logo"
+                        style="display:inline-block; overflow:visible;" xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="xMinYMid meet">
+                        <defs>
+                            <linearGradient id="grad99" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ff416c"></stop>
+                                <stop offset="100%" stop-color="#ff4b2b"></stop>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Cart icon -->
+                        <g transform="translate(16,12)">
+                            <circle cx="22" cy="66" r="7" fill="url(#grad99)"></circle>
+                            <circle cx="50" cy="66" r="7" fill="url(#grad99)"></circle>
+                            <path d="M10 12h14l10 38h46l10-26H30" fill="none" stroke="url(#grad99)" stroke-width="6"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+
+                        <!-- Wordmark -->
+                        <text x="110" y="68" font-family="Poppins, Arial, sans-serif" font-weight="600" font-size="38"
+                            fill="#222">Shopping</text>
+                    </svg>
+
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="container mx-auto max-w-4xl px-4 sm:px-6 mt-6 text-gray-700">
+
+            <h1 class="font-extrabold text-3xl sm:text-4xl text-gray-900 mb-6 border-b-2 pb-2">
+                ❓ Frequently Asked Questions (FAQs)
+            </h1>
+
+            <div class="space-y-6">
+                <section class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <h2 class="text-xl font-bold text-blue-800 mb-4">Shipping & Order Status</h2>
+                    <dl class="space-y-4">
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Dispatch & Delivery Time?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. Dispatch happens on the **same working
+                                day**. After dispatching, delivery time depends on the courier partner and your
+                                distance.</dd>
+                        </div>
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Serviceable Pincode for Delivery?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. We ship products **everywhere** in India.
+                            </dd>
+                        </div>
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Order Tracking Option?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. After dispatch, you can track your order
+                                using the courier’s website with the tracking details, which you will receive via
+                                **SMS**.</dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <h2 class="text-xl font-bold text-green-800 mb-4">Payment & Returns</h2>
+                    <dl class="space-y-4">
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Available Payment Method?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. We currently accept **Cash on Delivery**
+                                option only.</dd>
+                        </div>
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Return-Refund Option?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. **Available** with a simple request via
+                                email.</dd>
+                        </div>
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Period For Return Request?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. **7 days** after receiving the order.
+                            </dd>
+                        </div>
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Order Cancellation Option?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. **Available** with a simple request via
+                                email (must be requested before dispatch).</dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                    <h2 class="text-xl font-bold text-yellow-800 mb-4">Product Details & Usage</h2>
+                    <dl class="space-y-4">
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. How durable are my shoes?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. A pair of shoes can take a beating and
+                                keep on ticking in your everyday life. **We do not recommend** going camping, trekking,
+                                or working out in them. Base-jumping safe!</dd>
+                        </div>
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. How long will a pair of shoes last me?
+                            </dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. Pretty long, longer than your last
+                                relationship. Just give them love & care and occasionally caress them!</dd>
+                        </div>
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. How comfortable are my shoes?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. The soles are **shockproof,
+                                water-resistant, flexible, and extremely lightweight**. The insoles are cushiony,
+                                offering best-in-class comfort. Long story short – like walking on pillows!</dd>
+                        </div>
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Are shoes weather-resistant?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. Shoes are good for any weather and remain
+                                **breathable and airy**. Just don’t go skiing in them!</dd>
+                        </div>
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Will I sweat a lot in shoes?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. The **breathable uppers** will ensure you
+                                are comfortable even in hot conditions. Shoes have been tested in the deserts of Dubai,
+                                no jokes!</dd>
+                        </div>
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Can shoes be used for athletic purposes
+                                like running, gym, and training?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. Shoes are **all-day sneakers**, best for
+                                wearing comfortably throughout the day (over 14 hours of comfort). **We do not recommend
+                                them for gym/training/running**. Recommended for crossing roads and getting stuff done!
+                            </dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                    <h2 class="text-xl font-bold text-purple-800 mb-4">Style & Care</h2>
+                    <dl class="space-y-4">
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. What colors do shoes come in?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. We have **multiple colors in each
+                                style**. Refer to the product pages to see our complete range of available color blends.
+                                Awe guaranteed!</dd>
+                        </div>
+                        <div class="border-b pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Will the color of my shoes bleed or fade?
+                            </dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. Shoe uppers have been tested for **color
+                                fastness and fade resistance**. To keep them looking as good as new, treat them like a
+                                child, your own child!</dd>
+                        </div>
+                        <div class="pb-2">
+                            <dt class="text-lg font-semibold text-gray-900">Q. Are shoes eco-friendly?</dt>
+                            <dd class="text-base leading-relaxed pl-4 pt-1">A. Shoes are made of modern materials like
+                                most high-end shoes. We are working on an **eco-friendly line**, stay tuned!</dd>
+                        </div>
+                    </dl>
+                </section>
+            </div>
+
+            <section class="mt-8 p-4 bg-gray-100 rounded-lg">
+                <p class="text-lg font-bold text-gray-900 mb-2">Any other questions?</p>
+                <p class="text-base leading-relaxed">For any other questions, please drop us an email at <a
+                        href="mailto:contact@crazy4u.in"
+                        class="text-blue-600 hover:text-blue-800 hover:underline font-medium">contact@crazy4u.in</a>.
+                </p>
+
+                <div class="mt-4 p-3 bg-red-100 border border-red-400 rounded-md">
+                    <p class="text-sm font-bold text-red-700">⚠️ WARNING: We never ask for any credit/debit card number,
+                        OTP, PIN, CVV, etc.</p>
+                </div>
+            </section>
+
+            <hr class="my-8 border-gray-300">
+        </div>
+
+        <footer class="site-footer overflow-hidden">
+            <div class="footer-container">
+                <style>
+                    .site-footer {
+                        background: #1a1a1a;
+                        color: #fff;
+                        padding: 40px 20px 20px;
+                        font-family: Arial, sans-serif;
+                    }
+
+                    .footer-container {
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                        max-width: 1100px;
+                        margin: auto;
+                    }
+
+                    .footer-col {
+                        width: 30%;
+                        margin-bottom: 20px;
+                    }
+
+                    .footer-col h4 {
+                        font-size: 16px;
+                        color: #f1f1f1;
+                        margin-bottom: 15px;
+                        font-weight: 600;
+                        position: relative;
+                    }
+
+                    .footer-col ul {
+                        list-style: none;
+                        padding: 0;
+                    }
+
+                    .footer-col ul li {
+                        margin-bottom: 8px;
+                    }
+
+                    .footer-col ul li a {
+                        color: #bbb;
+                        text-decoration: none;
+                        font-size: 14px;
+                        transition: 0.3s;
+                    }
+
+                    .footer-col ul li a:hover {
+                        color: #00b894;
+                        padding-left: 5px;
+                    }
+
+                    .footer-bottom {
+                        text-align: center;
+                        margin-top: 20px;
+                        border-top: 1px solid #333;
+                        padding-top: 10px;
+                        font-size: 13px;
+                        color: #aaa;
+                    }
+                </style>
+
+                <!-- About Section -->
+                <div class="footer-col">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="FAQs.html">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Policy Section -->
+                <div class="footer-col">
+                    <h4>Policies</h4>
+                    <ul>
+                        <li><a href="termsCondition.html">Terms &amp; Conditions</a></li>
+                        <li><a href="privacyPolicy.html">Privacy Policy</a></li>
+                        <li><a href="cookiePolicy.html">Cookie Policy</a></li>
+                        <li><a href="returnRefund.html">Return &amp; Refund Policy</a></li>
+                        <li><a href="discolurePolicy.html">Disclosure Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="mailto:contact@anttak.com">📧 contact@crazy4u.in</a></li>
+                        <li><a href="shippingInfo.html">Shipping Info</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>© 2025 <b>crazy4u.in</b> | Powered by <b>crazy4u Enterprise</b></p>
+            </div>
+
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
