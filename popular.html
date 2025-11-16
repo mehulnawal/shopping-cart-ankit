@@ -19,15 +19,15 @@
         }
     </style>
 
-    <script defer src="js/products.js"></script>
-    
+    <!-- <script defer src="js/products.js"></script> -->
+    <script defer src="js/category.js"></script>
 </head>
 
 <body class="bg-gray-50">
 
     <div class="text-center text-[11px] sm:text-[12px] text-gray-500 mb-3">ADVERTISEMENT</div>
 
-    <!-- MAIN WRAPPER (500px but responsive) -->
+    <!-- MAIN WRAPPER -->
     <div class="mx-auto w-full max-w-[500px] px-3">
 
         <!-- NAVBAR -->
@@ -116,127 +116,13 @@
             </div>
         </nav>
 
-        <!-- SEARCH BAR -->
-        <div class="mt-4">
-            <div class="relative w-full">
-                <input type="text" placeholder="Search for Sarees, Kurtis, Cosmetics, etc."
-                    class="w-full p-3 pl-10 border border-gray-300 rounded-full text-[12px] sm:text-[13px] bg-gray-50"
-                    readonly>
-                <span class="absolute left-4 top-3.5 text-gray-400 text-[18px]">🔍</span>
-            </div>
-        </div>
-
-        <!-- CATEGORY SECTION -->
-        <div class="mt-6 border-b pb-4 overflow-x-auto">
-            <div class="grid grid-cols-4 gap-2 text-center min-w-max">
-
-                <!-- Category 1 -->
-                <a href="indian-dresses.html?cat=indian-dresses" class="block">
-                    <img src="assets/images/categories/indian-dressers.webp"
-                        class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
-                    <p class="text-[11px] sm:text-[12px] mt-2 font-medium">Indian Dresses</p>
-                </a>
-
-                <!-- Category 2 -->
-                <a href="popular.html?cat=popular" class="block">
-                    <img src="assets/images/categories/popular.webp"
-                        class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
-                    <p class="text-[11px] sm:text-[12px] mt-2 font-medium">Popular Coll…</p>
-                </a>
-
-                <!-- Category 3 -->
-                <a href="ethnic-wear.html?cat=ethnic-wear" class="block">
-                    <img src="assets/images/categories/ethinic-wear.webp"
-                        class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
-                    <p class="text-[11px] sm:text-[12px] mt-2 font-medium">Ethnic Wear</p>
-                </a>
-
-                <!-- Category 4 -->
-                <a href="combo.html?cat=combo" class="block">
-                    <img src="assets/images/categories/combo.webp"
-                        class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
-                    <p class="text-[11px] sm:text-[12px] mt-2 font-medium">COMBO</p>
-                </a>
-
-            </div>
-        </div>
-
         <div class="my-4 text-center text-[11px] sm:text-[12px] text-gray-500 mb-3">ADVERTISEMENT BANNER</div>
 
-        <!-- marque tag -->
-        <marquee behavior="scroll" direction="left" scrollamount="8"
-            class="w-full bg-[#970E71] py-2 text-white text-lg font-bold">
 
-            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
-            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
-            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
-            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
-
-            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
-            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
-            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
-            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
-
-        </marquee>
-
-        <!-- PRODUCT GRID TITLE -->
-        <div class="mt-10">
-            <h2 class="text-[22px] sm:text-[28px] font-semibold">Best Selling</h2>
+        <!-- GRID -->
+        <div id="categoryProducts" class="grid grid-cols-2 gap-3 mt-4">
         </div>
 
-        <!-- PRODUCT GRID -->
-        <div id="product-list" class="flex flex-wrap items-center">
-        </div>
-
-        <!-- <footer class="bg-[#1a1a1a] text-white py-10 w-full overflow-hidden">
-
-            <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-
-                <div class="grid grid-cols-3 gap-8 text-left text-sm">
-                    <div>
-                        <h3 class="text-base font-semibold mb-3">About</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="hover:text-gray-400">About Us</a></li>
-                            <li><a href="#" class="hover:text-gray-400">Contact Us</a></li>
-                            <li><a href="#" class="hover:text-gray-400">FAQs</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 class="text-base font-semibold mb-3">Policies</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="hover:text-gray-400">Terms & Conditions</a></li>
-                            <li><a href="#" class="hover:text-gray-400">Privacy Policy</a></li>
-                            <li><a href="#" class="hover:text-gray-400">Cookie Policy</a></li>
-                            <li><a href="#" class="hover:text-gray-400">Return & Refund Policy</a></li>
-                            <li><a href="#" class="hover:text-gray-400">Disclosure Policy</a></li>
-                            <li><a href="#" class="hover:text-gray-400">Disclaimer</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 class="text-base font-semibold mb-3">Support</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center gap-2">
-                                <span class="text-red-500">📧</span>
-                                <a href="mailto:contact@crazy4u.in" class="hover:text-gray-400">
-                                    contact@crazy4u.in
-                                </a>
-                            </li>
-                            <li><a href="#" class="hover:text-gray-400">Shipping Info</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="border-t border-gray-700 mt-10 pt-4 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="text-center text-xs opacity-70">
-                    © 2025 crazy4u.in | Powered by crazy4u Enterprise
-                </p>
-            </div>
-
-        </footer> -->
 
         <footer class="site-footer overflow-hidden">
             <div class="footer-container">
@@ -343,12 +229,10 @@
 
         </footer>
 
-    </div> <!-- MAIN WRAPPER END -->
+    </div>
 
-    <!-- CART OVERLAY -->
     <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"></div>
 
-    <!-- cart drawer -->
     <div id="cartDrawer"
         class="fixed top-0 right-0 w-[90%] h-full bg-white shadow-xl translate-x-full transition-transform duration-300 z-50 flex flex-col">
 
