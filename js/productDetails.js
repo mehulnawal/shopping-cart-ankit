@@ -1,11 +1,6 @@
-// ------------------------------------------
 // CONFIG
-// ------------------------------------------
+const JSON_PATH = "../data/products.json";
 
-const JSON_PATH = "../assets/products.json";   // correct path from public_html/product.html
-
-
-// cart
 document.addEventListener("DOMContentLoaded", () => {
     const cartIcon = document.getElementById("cartBtn");
     const cartDrawer = document.getElementById("cartDrawer");
@@ -24,13 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
         cartOverlay.classList.add("hidden");
     }
 
-    if (closeCart) closeCart.addEventListener("click", hideCart);
-    if (cartOverlay) cartOverlay.addEventListener("click", hideCart);
+    closeCart?.addEventListener("click", hideCart);
+    cartOverlay?.addEventListener("click", hideCart);
 });
 
-
-
-// --- 20 sample reviews ---
+// Random reviews
 const REVIEW_POOL = [
     "Loved the fit, fabric is good.",
     "Color was slightly different but wearable.",
@@ -54,11 +47,6 @@ const REVIEW_POOL = [
     "Overall satisfied, will recommend to friends."
 ];
 
-
-// ------------------------------------------
-// UTILITIES
-// ------------------------------------------
-
 function pickRandom(arr, n) {
     const copy = [...arr];
     const out = [];
@@ -71,15 +59,6 @@ function pickRandom(arr, n) {
 function getProductId() {
     return new URLSearchParams(window.location.search).get("id");
 }
-
-function escapeHtml(text) {
-    return text.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-}
-
-
-// ------------------------------------------
-// LOAD PRODUCT DATA
-// ------------------------------------------
 
 async function loadProduct() {
     try {
@@ -101,12 +80,6 @@ async function loadProduct() {
     }
 }
 
-
-
-// ------------------------------------------
-// RENDER PRODUCT PAGE
-// ------------------------------------------
-
 function renderProduct(product, all) {
 
     // MAIN IMAGE
@@ -114,59 +87,52 @@ function renderProduct(product, all) {
         <img src="${product.image1}" class="w-full h-full object-cover">
     `;
 
-    // THUMBNAILS
-    const thumbs = document.getElementById("thumbs");
-    thumbs.innerHTML = `
-        <img src="${product.image1}" data-src="${product.image1}" class="w-20 h-28 rounded cursor-pointer ring-2 ring-green-600">
-        <img src="${product.image2}" data-src="${product.image2}" class="w-20 h-28 rounded cursor-pointer">
+    // THUMBNAILS (responsive)
+    document.getElementById("thumbs").innerHTML = `
+        <img src="${product.image1}" data-src="${product.image1}"
+            class="w-16 h-20 sm:w-20 sm:h-28 rounded cursor-pointer ring-2 ring-green-600">
+        <img src="${product.image2}" data-src="${product.image2}"
+            class="w-16 h-20 sm:w-20 sm:h-28 rounded cursor-pointer">
     `;
 
-    // TITLE + PRICE DATA
+    // TEXT
     document.getElementById("productTitle").innerText = product.name;
     document.getElementById("productPrice").innerText = `₹${product.price}`;
     document.getElementById("productOld").innerText = product.oldPrice ? `₹${product.oldPrice}` : "";
     document.getElementById("productDiscount").innerText = product.discount ? `${product.discount}% off` : "";
 
-    // RATING
     const rating = product.rating || "4.3";
     document.getElementById("ratingBadge").innerText = rating;
     document.getElementById("avgRating").innerText = rating;
     document.getElementById("ratingCount").innerText = ` (${product.ratingCount || 4890})`;
 
-    // DESCRIPTION
     document.getElementById("productDescription").innerText = product.description;
 
-    // OFFERS
     document.getElementById("repeatOffers").innerHTML =
         "Buy 2 Get 2 Free (Add 4 item to cart) ".repeat(3);
 
-    // CUSTOMER IMAGES
+    // CUSTOMER IMAGES (responsive)
     document.getElementById("customerImages").innerHTML = `
-        <img src="${product.image1}" class="w-20 h-20 rounded shadow">
-        <img src="${product.image2}" class="w-20 h-20 rounded shadow">
+        <img src="${product.image1}" class="w-16 h-16 sm:w-20 sm:h-20 rounded shadow object-cover">
+        <img src="${product.image2}" class="w-16 h-16 sm:w-20 sm:h-20 rounded shadow object-cover">
     `;
-
 
     // REVIEWS
     renderReviews(pickRandom(REVIEW_POOL, 6), product);
 
-
-    // PRODUCTS FOR YOU
+    // PRODUCTS FOR YOU (responsive)
     const similar = all.filter(p => p.id !== product.id).slice(0, 2);
 
     document.getElementById("productsForYou").innerHTML = similar.map(p => `
-    <a href="product.html?id=${p.id}">
-        <div class="bg-white shadow rounded">
-            <img src="${p.image1}" class="h-52 w-full object-cover">
-            <div class="p-2 text-[13px]">${p.name}</div>
-            <div class="px-2 pb-3 font-bold text-green-700">₹${p.price}</div>
-        </div>
-    </a>
-`).join("");
+        <a href="product.html?id=${p.id}">
+            <div class="bg-white shadow rounded">
+                <img src="${p.image1}" class="h-40 sm:h-52 w-full object-cover">
+                <div class="p-2 text-[12px] sm:text-[13px]">${p.name}</div>
+                <div class="px-2 pb-3 font-bold text-green-700">₹${p.price}</div>
+            </div>
+        </a>
+    `).join("");
 
-
-
-    // THUMBNAIL CLICK
     document.querySelectorAll("#thumbs img").forEach(img => {
         img.onclick = () => {
             document.getElementById("mainImageWrap").innerHTML =
@@ -179,20 +145,12 @@ function renderProduct(product, all) {
         };
     });
 
-
-    // ADD TO CART + BUY NOW
     document.getElementById("addToCartBtn").onclick = () =>
         window.location.href = `checkout.html?id=${product.id}`;
 
     document.getElementById("buyNowBtn").onclick = () =>
         window.location.href = `checkout.html?id=${product.id}`;
 }
-
-
-
-// ------------------------------------------
-// RENDER REVIEWS
-// ------------------------------------------
 
 function renderReviews(list, product) {
     const out = document.getElementById("reviewsList");
@@ -210,46 +168,35 @@ function renderReviews(list, product) {
     list.forEach((text, i) => {
         const name = names[i % names.length];
         const date = dates[i % dates.length];
-        const stars = 5; // always 5 like screenshot
+        const stars = 5;
         const helpful = Math.floor(Math.random() * 900) + 200;
 
         out.innerHTML += `
-        <div class="bg-white rounded-xl p-4 shadow mb-6">
+        <div class="bg-white rounded-xl p-4 shadow">
 
-            <!-- Customer Name -->
-            <p class="text-[15px] font-semibold mb-1">${name}</p>
+            <p class="text-[14px] sm:text-[15px] font-semibold mb-1">${name}</p>
 
-            <!-- Rating + Date -->
             <div class="flex items-center gap-2 mb-2">
-                <span class="bg-green-600 text-white text-[13px] px-2 py-1 rounded flex items-center font-semibold">
+                <span class="bg-green-600 text-white text-[11px] sm:text-[13px] px-2 py-1 rounded font-semibold">
                     ${stars} ★
                 </span>
-                <span class="text-[12px] text-gray-600">Posted on ${date}</span>
+                <span class="text-[11px] sm:text-[12px] text-gray-600">Posted on ${date}</span>
             </div>
 
-            <!-- Review Text -->
-            <p class="text-[14px] text-gray-800 mb-3">
-                ${text}
-            </p>
+            <p class="text-[13px] sm:text-[14px] text-gray-800 mb-3">${text}</p>
 
-            <!-- Customer uploaded images -->
             <div class="flex gap-3 mb-3">
-                <img src="${product.image1}" class="w-24 h-24 rounded object-cover">
-                <img src="${product.image2}" class="w-24 h-24 rounded object-cover">
+                <img src="${product.image1}" class="w-20 h-20 sm:w-24 sm:h-24 rounded object-cover">
+                <img src="${product.image2}" class="w-20 h-20 sm:w-24 sm:h-24 rounded object-cover">
             </div>
 
-            <!-- Helpful -->
-            <div class="flex items-center text-gray-700 text-[14px] gap-2">
-                <span class="text-[20px]">👍</span>
+            <div class="flex items-center text-gray-700 text-[13px] sm:text-[14px] gap-2">
+                <span class="text-[18px] sm:text-[20px]">👍</span>
                 <span>Helpful (${helpful})</span>
             </div>
-        </div>
-        `;
+
+        </div>`;
     });
 }
 
-
-
-
-// ------------------------------------------
 loadProduct();

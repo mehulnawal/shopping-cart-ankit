@@ -24,8 +24,10 @@
 
 <body class="bg-gray-50">
 
-    <!-- MAIN WRAPPER (exact 500px width) -->
-    <div class="mx-auto w-[500px]">
+    <div class="text-center text-[11px] sm:text-[12px] text-gray-500 mb-3">ADVERTISEMENT</div>
+
+    <!-- MAIN WRAPPER (500px but responsive) -->
+    <div class="mx-auto w-full max-w-[500px] px-3">
 
         <!-- NAVBAR -->
         <nav class="py-4">
@@ -34,133 +36,309 @@
                 <!-- LEFT: Menu + Logo -->
                 <div class="flex items-center gap-3">
                     <!-- Menu Icon -->
-                    <span class="text-[28px] cursor-pointer">☰</span>
+                    <span class="text-[16px] sm:text-[16px] cursor-pointer">☰</span>
+
                     <!-- Logo -->
-                    <h1 class="font-semibold text-[28px]">Shopping</h1>
+                    <svg viewBox="0 0 380 100" width="140" height="40" aria-label="Shopping logo"
+                        style="display:inline-block; overflow:visible;" xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="xMinYMid meet">
+                        <defs>
+                            <linearGradient id="grad99" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ff416c"></stop>
+                                <stop offset="100%" stop-color="#ff4b2b"></stop>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Cart icon -->
+                        <g transform="translate(16,12)">
+                            <circle cx="22" cy="66" r="7" fill="url(#grad99)"></circle>
+                            <circle cx="50" cy="66" r="7" fill="url(#grad99)"></circle>
+                            <path d="M10 12h14l10 38h46l10-26H30" fill="none" stroke="url(#grad99)" stroke-width="6"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+
+                        <!-- Wordmark -->
+                        <text x="110" y="68" font-family="Poppins, Arial, sans-serif" font-weight="600" font-size="38"
+                            fill="#222">Shopping</text>
+                    </svg>
                 </div>
 
                 <!-- RIGHT: Wishlist + Cart -->
-                <div class="flex gap-6 text-[22px] text-gray-700">
-                    <span class="cursor-pointer">🤍</span>
-                    <span class="cursor-pointer">🛒</span>
+                <div class="flex gap-4 sm:gap-6 text-[16px] sm:text-[16px] text-gray-700">
+
+                    <!-- wishlist icon -->
+                    <svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" ml="16" iconsize="24"
+                        class="sc-gswNZR dJzkYm">
+                        <path fill="#fff" d="M0 .657h24v24H0z"></path>
+                        <path fill="#fff" d="M2 2.657h20v20H2z"></path>
+                        <path
+                            d="M22 9.174c0 3.724-1.87 7.227-9.67 12.38a.58.58 0 0 1-.66 0C3.87 16.401 2 12.898 2 9.174S4.59 3.67 7.26 3.66c3.22-.081 4.61 3.573 4.74 3.774.13-.201 1.52-3.855 4.74-3.774C19.41 3.669 22 5.45 22 9.174Z"
+                            fill="#ED3843"></path>
+                    </svg>
+
+
+                    <span class="cursor-pointer">
+                        <svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" ml="16" iconsize="24"
+                            class="sc-gswNZR dJzkYm">
+                            <g clip-path="url(#cart-header_svg__a)">
+                                <path fill="#fff" d="M2.001 1.368h20v20h-20z"></path>
+                                <g clip-path="url(#cart-header_svg__b)">
+                                    <g clip-path="url(#cart-header_svg__c)">
+                                        <path
+                                            d="M6.003 5.183h15.139c.508 0 .908.49.85 1.046l-.762 7.334c-.069.62-.537 1.1-1.103 1.121l-12.074.492-2.05-9.993Z"
+                                            fill="rgb(25,135,84)"></path>
+                                        <path
+                                            d="M11.8 21.367c.675 0 1.22-.597 1.22-1.334 0-.737-.545-1.335-1.22-1.335-.673 0-1.22.598-1.22 1.335s.547 1.334 1.22 1.334ZM16.788 21.367c.674 0 1.22-.597 1.22-1.334 0-.737-.546-1.335-1.22-1.335-.673 0-1.22.598-1.22 1.335s.547 1.334 1.22 1.334Z"
+                                            fill="rgb(25,135,84)"></path>
+                                        <path
+                                            d="m2.733 4.169 3.026 1.42 2.528 12.085c.127.609.615 1.036 1.181 1.036h9.615"
+                                            stroke="rgb(25,135,84)" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </g>
+                                </g>
+                            </g>
+                            <defs>
+                                <clipPath id="cart-header_svg__a">
+                                    <path fill="#fff" transform="translate(2.001 1.368)" d="M0 0h20v20H0z"></path>
+                                </clipPath>
+                                <clipPath id="cart-header_svg__b">
+                                    <path fill="#fff" transform="translate(2.001 1.368)" d="M0 0h20v20H0z"></path>
+                                </clipPath>
+                                <clipPath id="cart-header_svg__c">
+                                    <path fill="#fff" transform="translate(2.001 3.368)" d="M0 0h20v18H0z"></path>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </span>
                 </div>
 
             </div>
         </nav>
 
-        <!-- SEARCH BAR (non-editable) -->
+        <!-- SEARCH BAR -->
         <div class="mt-4">
             <div class="relative w-full">
                 <input type="text" placeholder="Search for Sarees, Kurtis, Cosmetics, etc."
-                    class="w-full p-3 pl-10 border border-gray-300 rounded-full text-[13px] bg-gray-50" readonly>
+                    class="w-full p-3 pl-10 border border-gray-300 rounded-full text-[12px] sm:text-[13px] bg-gray-50"
+                    readonly>
                 <span class="absolute left-4 top-3.5 text-gray-400 text-[18px]">🔍</span>
             </div>
         </div>
 
         <!-- CATEGORY SECTION -->
-        <div class="mt-6 border-b pb-4">
-            <div class="grid grid-cols-4 text-center gap-3">
+        <div class="mt-6 border-b pb-4 overflow-x-auto">
+            <div class="grid grid-cols-4 gap-2 text-center min-w-max">
 
                 <!-- Category 1 -->
                 <a href="category.html?cat=indian-dresses" class="block">
                     <img src="assets/images/categories/indian-dressers.webp"
-                        class="w-20 h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
-                    <p class="text-[12px] mt-2 font-medium">Indian Dresses</p>
+                        class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
+                    <p class="text-[11px] sm:text-[12px] mt-2 font-medium">Indian Dresses</p>
                 </a>
 
                 <!-- Category 2 -->
                 <a href="category.html?cat=popular" class="block">
                     <img src="assets/images/categories/popular.webp"
-                        class="w-20 h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
-                    <p class="text-[12px] mt-2 font-medium">Popular Coll…</p>
+                        class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
+                    <p class="text-[11px] sm:text-[12px] mt-2 font-medium">Popular Coll…</p>
                 </a>
 
                 <!-- Category 3 -->
                 <a href="category.html?cat=ethnic-wear" class="block">
                     <img src="assets/images/categories/ethinic-wear.webp"
-                        class="w-20 h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
-                    <p class="text-[12px] mt-2 font-medium">Ethnic Wear</p>
+                        class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
+                    <p class="text-[11px] sm:text-[12px] mt-2 font-medium">Ethnic Wear</p>
                 </a>
 
                 <!-- Category 4 -->
                 <a href="category.html?cat=combo" class="block">
                     <img src="assets/images/categories/combo.webp"
-                        class="w-20 h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
-                    <p class="text-[12px] mt-2 font-medium">COMBO</p>
+                        class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover mx-auto shadow cursor-pointer">
+                    <p class="text-[11px] sm:text-[12px] mt-2 font-medium">COMBO</p>
                 </a>
 
             </div>
         </div>
 
+        <div class="my-4 text-center text-[11px] sm:text-[12px] text-gray-500 mb-3">ADVERTISEMENT BANNER</div>
+
+        <!-- marque tag -->
+        <marquee behavior="scroll" direction="left" scrollamount="8"
+            class="w-full bg-[#970E71] py-2 text-white text-lg font-bold">
+
+            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
+            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
+            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
+            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
+
+            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
+            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
+            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
+            <span class="mr-16">Buy 2 Get 2 Free (Add 4 item to cart)</span>
+
+        </marquee>
+
         <!-- PRODUCT GRID TITLE -->
         <div class="mt-10">
-            <h2 class="text-[28px] font-semibold">Best Selling</h2>
+            <h2 class="text-[22px] sm:text-[28px] font-semibold">Best Selling</h2>
         </div>
-
-        <!-- PRODUCT GRID (2 columns) -->
-        <div id="product-list" class="mt-6 grid grid-cols-2 gap-6"></div>
 
         <!-- PRODUCT GRID -->
-        <div class="mt-6 grid grid-cols-1 gap-10">
-
-            <!-- JS will insert cards here -->
-            <div class="mt-6 grid grid-cols-1 gap-10">
-                <div id="product-list" class="contents"></div>
-            </div>
-
+        <div id="product-list" class="flex flex-wrap items-center">
         </div>
 
-        <!-- FOOTER -->
-        <footer class="bg-black text-white py-10 rounded-t-xl ">
+        <!-- <footer class="bg-[#1a1a1a] text-white py-10 w-full overflow-hidden">
 
-            <!-- 3 Columns -->
-            <div class="w-full grid grid-cols-3 gap-8 text-left text-[13px] px-4">
+            <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                <!-- ABOUT -->
-                <div>
-                    <h3 class="text-[16px] font-semibold mb-3">About</h3>
-                    <ul class="space-y-1">
-                        <li><a href="#" class="hover:underline">About Us</a></li>
-                        <li><a href="#" class="hover:underline">Contact Us</a></li>
-                        <li><a href="#" class="hover:underline">FAQs</a></li>
-                    </ul>
+                <div class="grid grid-cols-3 gap-8 text-left text-sm">
+                    <div>
+                        <h3 class="text-base font-semibold mb-3">About</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-gray-400">About Us</a></li>
+                            <li><a href="#" class="hover:text-gray-400">Contact Us</a></li>
+                            <li><a href="#" class="hover:text-gray-400">FAQs</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-base font-semibold mb-3">Policies</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-gray-400">Terms & Conditions</a></li>
+                            <li><a href="#" class="hover:text-gray-400">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-gray-400">Cookie Policy</a></li>
+                            <li><a href="#" class="hover:text-gray-400">Return & Refund Policy</a></li>
+                            <li><a href="#" class="hover:text-gray-400">Disclosure Policy</a></li>
+                            <li><a href="#" class="hover:text-gray-400">Disclaimer</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-base font-semibold mb-3">Support</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2">
+                                <span class="text-red-500">📧</span>
+                                <a href="mailto:contact@crazy4u.in" class="hover:text-gray-400">
+                                    contact@crazy4u.in
+                                </a>
+                            </li>
+                            <li><a href="#" class="hover:text-gray-400">Shipping Info</a></li>
+                        </ul>
+                    </div>
+
                 </div>
-
-                <!-- POLICIES -->
-                <div>
-                    <h3 class="text-[16px] font-semibold mb-3">Policies</h3>
-                    <ul class="space-y-1">
-                        <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
-                        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:underline">Cookie Policy</a></li>
-                        <li><a href="#" class="hover:underline">Return & Refund Policy</a></li>
-                        <li><a href="#" class="hover:underline">Disclosure Policy</a></li>
-                        <li><a href="#" class="hover:underline">Disclaimer</a></li>
-                    </ul>
-                </div>
-
-                <!-- SUPPORT -->
-                <div>
-                    <h3 class="text-[16px] font-semibold mb-3">Support</h3>
-                    <ul class="space-y-1">
-                        <li class="flex items-center gap-2">
-                            <img src="assets/icons/mail.png" class="w-4 h-4">
-                            <a href="mailto:contact@crazy4u.in" class="hover:underline">
-                                contact@crazy4u.in
-                            </a>
-                        </li>
-                        <li><a href="#" class="hover:underline">Shipping Info</a></li>
-                    </ul>
-                </div>
-
             </div>
 
-            <!-- LINE DIVIDER -->
-            <div class="border-t border-gray-700 mt-10 pt-4">
-                <p class="text-center text-[12px] opacity-70">
+            <div class="border-t border-gray-700 mt-10 pt-4 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-xs opacity-70">
                     © 2025 crazy4u.in | Powered by crazy4u Enterprise
                 </p>
             </div>
+
+        </footer> -->
+
+        <footer class="site-footer overflow-hidden">
+            <div class="footer-container">
+                <style>
+                    .site-footer {
+                        background: #1a1a1a;
+                        color: #fff;
+                        padding: 40px 20px 20px;
+                        font-family: Arial, sans-serif;
+                    }
+
+                    .footer-container {
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                        max-width: 1100px;
+                        margin: auto;
+                    }
+
+                    .footer-col {
+                        width: 30%;
+                        margin-bottom: 20px;
+                    }
+
+                    .footer-col h4 {
+                        font-size: 16px;
+                        color: #f1f1f1;
+                        margin-bottom: 15px;
+                        font-weight: 600;
+                        position: relative;
+                    }
+
+                    .footer-col ul {
+                        list-style: none;
+                        padding: 0;
+                    }
+
+                    .footer-col ul li {
+                        margin-bottom: 8px;
+                    }
+
+                    .footer-col ul li a {
+                        color: #bbb;
+                        text-decoration: none;
+                        font-size: 14px;
+                        transition: 0.3s;
+                    }
+
+                    .footer-col ul li a:hover {
+                        color: #00b894;
+                        padding-left: 5px;
+                    }
+
+                    .footer-bottom {
+                        text-align: center;
+                        margin-top: 20px;
+                        border-top: 1px solid #333;
+                        padding-top: 10px;
+                        font-size: 13px;
+                        color: #aaa;
+                    }
+                </style>
+
+                <!-- About Section -->
+                <div class="footer-col">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="FAQs.html">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Policy Section -->
+                <div class="footer-col">
+                    <h4>Policies</h4>
+                    <ul>
+                        <li><a href="termsCondition.html">Terms &amp; Conditions</a></li>
+                        <li><a href="privacyPolicy.html">Privacy Policy</a></li>
+                        <li><a href="cookiePolicy.html">Cookie Policy</a></li>
+                        <li><a href="returnRefund.html">Return &amp; Refund Policy</a></li>
+                        <li><a href="discolurePolicy.html">Disclosure Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="mailto:contact@anttak.com">📧 contact@crazy4u.in</a></li>
+                        <li><a href="shippingInfo.html">Shipping Info</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>© 2025 <b>crazy4u.in</b> | Powered by <b>crazy4u Enterprise</b></p>
+            </div>
+
 
         </footer>
 
@@ -169,55 +347,52 @@
     <!-- CART OVERLAY -->
     <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"></div>
 
-    <!-- CART DRAWER -->
-    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"></div>
-
-    <!-- FULL WIDTH CART DRAWER -->
+    <!-- cart drawer -->
     <div id="cartDrawer"
-        class="fixed top-0 right-0 w-full h-full bg-white shadow-xl translate-x-full transition-transform duration-300 z-50">
+        class="fixed top-0 right-0 w-[90%] h-full bg-white shadow-xl translate-x-full transition-transform duration-300 z-50 flex flex-col">
 
-        <!-- HEADER -->
-        <div class="p-6 flex justify-between items-center border-b">
-            <h2 class="text-[30px] font-semibold border-b-4 border-orange-400 pb-1">Your Cart</h2>
-            <button id="closeCart" class="text-3xl">&times;</button>
+        <div class="pt-6 px-4 flex justify-between items-center">
+            <h2 class="text-[26px] sm:text-[30px] font-semibold">Your Cart</h2>
+            <button id="closeCart" class="text-3xl leading-none font-light">&times;</button>
         </div>
+        <hr class="mt-4 border-gray-200" />
 
-        <!-- CART ITEMS (empty space like screenshot) -->
-        <div id="cartItems" class="h-[55%] p-6 overflow-y-auto">
+
+        <div id="cartItems" class="flex-grow px-4 overflow-y-auto">
             <p class="text-gray-400 text-center mt-10">Your cart is empty.</p>
         </div>
 
-        <!-- BOTTOM SECTION -->
-        <div class="w-full border-t bg-white p-6 space-y-3">
 
-            <div class="flex justify-between text-[18px]">
+        <div class="w-full bg-white px-4 pt-4 space-y-2 text-black">
+
+            <div class="flex justify-between text-[16px] sm:text-[18px]">
                 <p>Cart Total:</p>
                 <p>₹00.00</p>
             </div>
 
-            <div class="flex justify-between text-[18px]">
+            <div class="flex justify-between text-[16px] sm:text-[18px]">
                 <p>Shipping:</p>
-                <p class="text-green-600 font-semibold">FREE</p>
+                <p>FREE</p>
             </div>
 
-            <div class="flex justify-between text-[18px] border-b pb-4">
+            <div class="flex justify-between text-[16px] sm:text-[18px] border-b pb-4">
                 <p>To Pay:</p>
                 <p>₹00.00</p>
             </div>
 
-            <div class="text-center mt-4">
-                <p class="text-[28px] font-semibold">₹00.00</p>
+            <div class="py-4 text-center">
+                <p class="text-[24px] sm:text-[28px] font-semibold">₹00.00</p>
                 <p class="text-gray-500 text-sm">Inclusive of all taxes</p>
+
+                <button
+                    class="w-full bg-purple-700 text-white text-[16px] sm:text-[18px] py-3 rounded-lg font-semibold mt-4">
+                    Confirm Order
+                </button>
             </div>
 
-            <button class="w-full bg-purple-700 text-white text-[18px] py-3 rounded-lg font-semibold mt-4">
-                Confirm Order
-            </button>
-
         </div>
+        <div class="h-[20px] bg-black"></div>
     </div>
-
-
 
 </body>
 

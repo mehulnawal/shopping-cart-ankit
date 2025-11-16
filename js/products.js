@@ -1,54 +1,62 @@
-async function loadProducts() {
-    const response = await fetch("assets/products.json");
-    const products = await response.json();
+document.addEventListener("DOMContentLoaded", async () => {
+  const box = document.getElementById("product-list");
+  try {
+    const res = await fetch('/api/getProducts.php');
+    const products = await res.json();
 
-    const container = document.getElementById("product-list");
+    // filter by home
+    const homeProducts = (products || []).filter(p => p.category === 'home');
 
-    container.innerHTML = products
-        .map(p => `
-        <a href="../public_html/product.html?id=${p.id}" class="block bg-white rounded-xl overflow-hidden shadow">
+    if (!homeProducts.length) {
+      box.innerHTML = `<p class="text-gray-500 text-[13px]">No products available in home category.</p>`;
+      return;
+    }
 
-            <!-- IMAGE -->
-            <div class="w-full h-[300px] overflow-hidden">
-                <img src="${p.image1}"
-                     class="w-full h-full object-cover">
+    box.innerHTML = homeProducts.map(p => `
+    <a href="/product.html?id=${encodeURIComponent(p.id)}" 
+        class="block w-1/2 flex flex-col relative h-full overflow-hidden"> 
+        
+        <div class="bg-[#fdfdfdb3] border border-gray-300/40 border-b-2 shadow-sm p-4 flex flex-col h-full"> 
+            
+            <div class="w-[65%] h-[250px] relative overflow-hidden rounded-md mx-auto"> 
+                <img src="${p.image1}" class="absolute inset-0 w-full h-full object-cover">
+                <img src="${p.image2}" class="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 transition-opacity duration-300">
             </div>
 
-            <div class="p-3">
-
-                <!-- NAME -->
-                <p class="text-[13px] font-medium text-gray-800 leading-tight line-clamp-2">
-                    ${p.name}
-                </p>
-
-                <!-- PRICE + OLD PRICE + DISCOUNT -->
-                <div class="mt-1">
-                    <span class="text-[18px] font-semibold text-green-700">₹${p.price}.00</span>
-                    <span class="text-[13px] line-through text-gray-400 ml-1">₹${p.oldPrice}.00</span>
-                    <span class="text-[13px] text-red-500 font-semibold ml-1">${p.discount}% off</span>
-                </div>
-
-                <!-- SPECIAL OFFERS -->
-                <p class="text-[12px] text-green-600 font-medium mt-1">₹755 with 2 Special Offers</p>
-
-                <!-- FREE DELIVERY -->
-                <p class="text-[12px] text-green-700 font-medium mt-1">Free Delivery</p>
-
-                <!-- RATING BOX -->
-                <div class="flex items-center gap-2 mt-2">
-                    <span class="bg-green-600 text-white px-2 py-1 text-[12px] rounded-md font-semibold">
-                        ⭐ ${p.rating}
-                    </span>
-                    <span class="text-[12px] text-gray-600">(${p.ratingCount})</span>
-                </div>
-
+            <h3 class="mt-3 text-[15px] sm:text-xs font-normal text-gray-800 leading-snug line-clamp-2 h-[2em]">
+                ${p.name}
+            </h3>
+            
+            <div class="flex items-center gap-2 my-2">
+                <span class="text-lg sm:text-base text-gray-900 font-bold">₹${p.price}</span>
+                
+                <span class="line-through text-sm sm:text-xs text-gray-500">₹${p.oldPrice}</span>
+                
+                <span class="text-sm sm:text-xs text-gray-700">94% off</span> 
             </div>
-        </a>
-    `)
-        .join("");
-}
+            
+            <p class="text-sm sm:text-xs text-green-700 mt-1">₹755 with 2 Special Offers</p>
+            
+            <p class="text-sm sm:text-xs text-gray-600 mt-1">Free Delivery</p>
+            
+            <div class="flex items-center gap-2 mt-2 mt-auto">
+                <div class="bg-green-700 text-white px-1.5 py-0.5 rounded-[30px] flex items-center text-xs">
+                    <span>${p.rating}</span>
+                    <span class="ml-0.5">⭐</span>
+                </div>
+                
+                <span class="text-sm sm:text-xs text-gray-600">(${p.ratingCount})</span>
+            </div>
+        </div>
+    </a>
+`).join('');
 
-loadProducts();
+  } catch (err) {
+    console.error(err);
+    box.innerHTML = `<p class="text-red-500">Failed to load products.</p>`;
+  }
+});
+
 
 
 // cart logic 
@@ -59,14 +67,14 @@ const closeCart = document.getElementById("closeCart");
 
 // OPEN CART
 cartIcon.addEventListener("click", () => {
-    cartDrawer.classList.remove("translate-x-full");
-    cartOverlay.classList.remove("hidden");
+  cartDrawer.classList.remove("translate-x-full");
+  cartOverlay.classList.remove("hidden");
 });
 
 // CLOSE CART
 function hideCart() {
-    cartDrawer.classList.add("translate-x-full");
-    cartOverlay.classList.add("hidden");
+  cartDrawer.classList.add("translate-x-full");
+  cartOverlay.classList.add("hidden");
 }
 
 closeCart.addEventListener("click", hideCart);

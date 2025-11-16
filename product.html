@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product — Shopping</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+
+    <script src="../js/productDetails.js" defer></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- MAIN WRAPPER -->
+    <div class="mx-auto w-full max-w-[500px] px-3">
+
+        <!-- NAV -->
+        <nav class="py-4">
+            <div class="w-full flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <span class="text-[22px] sm:text-[24px] cursor-pointer">☰</span>
+                    <h1 class="font-semibold text-[20px] sm:text-[24px]">Shopping</h1>
+                </div>
+                <div class="flex gap-4 text-[18px] sm:text-[20px] text-gray-700">
+                    <span id="wishlistBtn" class="cursor-pointer">🤍</span>
+                    <span id="cartBtn" class="cursor-pointer">🛒</span>
+                </div>
+            </div>
+        </nav>
+
+        <div class="text-center text-[11px] sm:text-[12px] text-gray-600 mb-4">
+            Buy 2 Get 2 Free (Add 4 item to cart)
+        </div>
+
+        <div class="text-center text-[11px] sm:text-[12px] text-gray-500 mb-3">ADVERTISEMENT</div>
+
+        <!-- MAIN PRODUCT IMAGE -->
+        <div id="mainImageWrap" class="w-full h-[300px] sm:h-[420px] rounded-xl overflow-hidden bg-white shadow mb-4">
+        </div>
+
+        <!-- THUMBNAILS -->
+        <div id="thumbs" class="flex gap-3 mb-4 overflow-x-auto"></div>
+
+        <!-- TITLE -->
+        <h2 id="productTitle" class="text-[14px] sm:text-[15px] font-semibold line-clamp-2 mb-2"></h2>
+
+        <!-- PRICE -->
+        <div class="flex items-center gap-3 mb-2">
+            <span id="productPrice" class="text-[18px] sm:text-[20px] font-bold text-green-700"></span>
+            <span id="productOld" class="line-through text-[12px] sm:text-[13px] text-gray-400"></span>
+            <span id="productDiscount" class="text-[12px] sm:text-[13px] text-red-600 font-semibold"></span>
+        </div>
+
+        <!-- OFFERS + RATING -->
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+            <span id="offerChip" class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[11px] sm:text-[12px]">
+                ₹250 with 2 Special Offers
+            </span>
+            <div class="flex items-center gap-2 ml-auto">
+                <span id="ratingBadge"
+                    class="bg-green-600 text-white px-3 py-1 rounded text-[12px] sm:text-[13px] font-semibold">4.3</span>
+                <span id="ratingCount" class="text-[11px] sm:text-[12px] text-gray-600">(123)</span>
+            </div>
+        </div>
+
+        <p class="text-[12px] sm:text-[13px] text-green-700 mb-4">Free Delivery</p>
+
+        <div class="text-center text-[11px] sm:text-[12px] text-gray-500 mb-4">ADVERTISEMENT</div>
+
+        <!-- DESCRIPTION -->
+        <div class="mb-6">
+            <h3 class="text-[15px] sm:text-[16px] font-semibold mb-2">Product Details</h3>
+            <div id="productDescription" class="text-[13px] sm:text-[14px] text-gray-700 leading-relaxed"></div>
+        </div>
+
+        <div id="repeatOffers" class="text-[12px] sm:text-[13px] text-gray-600 mb-6"></div>
+
+        <div class="text-center text-[11px] sm:text-[12px] text-gray-500 mb-4">ADVERTISEMENT</div>
+
+        <!-- BUTTONS -->
+        <div class="flex gap-4 mb-8">
+            <button id="addToCartBtn"
+                class="flex-1 bg-green-600 text-white py-3 rounded-md font-semibold text-[14px] sm:text-[16px]">
+                Add to Cart
+            </button>
+            <button id="buyNowBtn"
+                class="flex-1 bg-green-700 text-white py-3 rounded-md font-semibold text-[14px] sm:text-[16px]">
+                Buy Now
+            </button>
+        </div>
+
+        <!-- RATINGS & REVIEWS -->
+        <div class="mb-6">
+            <h3 class="text-[15px] sm:text-[16px] font-semibold mb-3">Product Ratings & Reviews</h3>
+
+            <div class="bg-white p-4 rounded-xl shadow">
+
+                <div class="flex items-center gap-6 flex-wrap">
+                    <div class="text-[26px] sm:text-[32px] font-bold text-green-700" id="avgRating">4.3</div>
+
+                    <div class="flex-1 min-w-[250px]">
+                        <!-- BAR ROWS (unchanged) -->
+                        <!-- each row left untouched, only responsive sizes handled automatically -->
+                        <div class="flex items-center justify-between text-[12px] sm:text-[13px] mb-2">
+                            <div class="w-3/12 sm:w-2/12">Excellent</div>
+                            <div class="w-7/12 sm:w-8/12 bg-gray-100 h-3 rounded mx-3">
+                                <div id="barExcellent" class="h-3 bg-green-500 rounded w-3/12"></div>
+                            </div>
+                            <div class="w-2/12 text-right" id="countExcellent">2143</div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-[12px] sm:text-[13px] mb-2">
+                            <div class="w-3/12 sm:w-2/12">Very Good</div>
+                            <div class="w-7/12 sm:w-8/12 bg-gray-100 h-3 rounded mx-3">
+                                <div id="barVeryGood" class="h-3 bg-green-400 rounded w-1/12"></div>
+                            </div>
+                            <div class="w-2/12 text-right" id="countVeryGood">409</div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-[12px] sm:text-[13px] mb-2">
+                            <div class="w-3/12 sm:w-2/12">Good</div>
+                            <div class="w-7/12 sm:w-8/12 bg-gray-100 h-3 rounded mx-3">
+                                <div id="barGood" class="h-3 bg-yellow-400 rounded w-4/12"></div>
+                            </div>
+                            <div class="w-2/12 text-right" id="countGood">1957</div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-[12px] sm:text-[13px] mb-2">
+                            <div class="w-3/12 sm:w-2/12">Average</div>
+                            <div class="w-7/12 sm:w-8/12 bg-gray-100 h-3 rounded mx-3">
+                                <div id="barAverage" class="h-3 bg-orange-400 rounded w-1/12"></div>
+                            </div>
+                            <div class="w-2/12 text-right" id="countAverage">547</div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-[12px] sm:text-[13px]">
+                            <div class="w-3/12 sm:w-2/12">Poor</div>
+                            <div class="w-7/12 sm:w-8/12 bg-gray-100 h-3 rounded mx-3">
+                                <div id="barPoor" class="h-3 bg-red-400 rounded w-1/12"></div>
+                            </div>
+                            <div class="w-2/12 text-right" id="countPoor">345</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CUSTOMER REAL IMAGES -->
+        <div class="mb-6">
+            <h4 class="text-[13px] sm:text-[14px] font-semibold mb-3">Real Images and videos from customers</h4>
+            <div id="customerImages" class="flex gap-3 overflow-x-auto"></div>
+        </div>
+
+        <!-- REVIEWS -->
+        <div class="mb-8">
+            <h4 class="text-[15px] sm:text-[16px] font-semibold mb-4">Customer Reviews</h4>
+            <div id="reviewsList" class="space-y-6"></div>
+
+            <div class="text-center mt-6">
+                <button id="viewAllReviews" class="text-purple-700 font-semibold text-[14px] sm:text-[15px]">
+                    VIEW ALL REVIEWS
+                </button>
+            </div>
+        </div>
+
+        <!-- FEATURES -->
+        <div class="bg-[#eef3ff] w-full py-4 rounded-xl flex items-center justify-around mb-10">
+
+            <div class="flex flex-col items-center text-center">
+                <img src="../assets/images/categories/lowest-price.webp" class="w-10 h-10 sm:w-12 sm:h-12 mb-1">
+                <span class="text-[12px] sm:text-[13px] font-semibold">Lowest Price</span>
+            </div>
+
+            <div class="w-px h-10 bg-gray-300"></div>
+
+            <div class="flex flex-col items-center text-center">
+                <img src="../assets/images/categories/cash-on-delivery.webp" class="w-10 h-10 sm:w-12 sm:h-12 mb-1">
+                <span class="text-[12px] sm:text-[13px] font-semibold">Cash on Delivery</span>
+            </div>
+
+            <div class="w-px h-10 bg-gray-300"></div>
+
+            <div class="flex flex-col items-center text-center">
+                <img src="../assets/images/categories/7-days-return.webp" class="w-10 h-10 sm:w-12 sm:h-12 mb-1">
+                <span class="text-[12px] sm:text-[13px] font-semibold">7-day Returns</span>
+            </div>
+
+        </div>
+
+        <!-- PRODUCTS FOR YOU -->
+        <div class="mb-10">
+            <h4 class="text-[15px] sm:text-[16px] font-semibold mb-4">Products For You</h4>
+            <div id="productsForYou" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+        </div>
+
+    </div>
+
+    <!-- CART OVERLAY -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"></div>
+
+    <div id="cartDrawer"
+        class="fixed top-0 right-0 w-full h-full bg-white shadow-xl translate-x-full transition-transform duration-300 z-50 px-4">
+
+        <div class="p-6 flex justify-between items-center border-b">
+            <h2 class="text-[26px] sm:text-[30px] font-semibold border-b-4 border-orange-400 pb-1">Your Cart</h2>
+            <button id="closeCart" class="text-3xl">&times;</button>
+        </div>
+
+        <div id="cartItems" class="h-[55%] p-6 overflow-y-auto">
+            <p class="text-gray-400 text-center mt-10">Your cart is empty.</p>
+        </div>
+
+        <div class="w-full border-t bg-white p-6 space-y-3">
+            <div class="flex justify-between text-[16px] sm:text-[18px]">
+                <p>Cart Total:</p>
+                <p>₹00.00</p>
+            </div>
+
+            <div class="flex justify-between text-[16px] sm:text-[18px]">
+                <p>Shipping:</p>
+                <p class="text-green-600 font-semibold">FREE</p>
+            </div>
+
+            <div class="flex justify-between text-[16px] sm:text-[18px] border-b pb-4">
+                <p>To Pay:</p>
+                <p>₹00.00</p>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="text-[24px] sm:text-[28px] font-semibold">₹00.00</p>
+                <p class="text-gray-500 text-sm">Inclusive of all taxes</p>
+            </div>
+
+            <button
+                class="w-full bg-purple-700 text-white text-[16px] sm:text-[18px] py-3 rounded-lg font-semibold mt-4">
+                Confirm Order
+            </button>
+        </div>
+    </div>
+
+</body>
+
+</html>
